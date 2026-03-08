@@ -5,8 +5,8 @@ import (
 )
 
 func TestDefaultBaseURL(t *testing.T) {
-	if DefaultBaseURL != "http://localhost:11434/v1" {
-		t.Errorf("expected default base URL http://localhost:11434/v1, got %s", DefaultBaseURL)
+	if DefaultBaseURL != "http://localhost:11434" {
+		t.Errorf("expected default base URL http://localhost:11434, got %s", DefaultBaseURL)
 	}
 }
 
@@ -18,7 +18,7 @@ func TestNewReturnsNonNil(t *testing.T) {
 }
 
 func TestNewWithBaseURLReturnsNonNil(t *testing.T) {
-	opt := NewWithBaseURL("http://myhost:11434/v1", "llama3")
+	opt := NewWithBaseURL("http://myhost:11434", "llama3")
 	if opt == nil {
 		t.Fatal("expected non-nil request option")
 	}

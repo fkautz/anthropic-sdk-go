@@ -1,7 +1,7 @@
 // Package ollama provides convenience functions to use the Anthropic SDK
 // with a local Ollama instance.
 //
-// Ollama exposes an OpenAI-compatible API at http://localhost:11434/v1.
+// Ollama exposes an OpenAI-compatible API at http://localhost:11434.
 // This package wraps the openai middleware with Ollama-specific defaults.
 //
 // Usage:
@@ -12,7 +12,7 @@
 //
 //	// Or with a custom host:
 //	client := anthropic.NewClient(
-//	    ollama.NewWithBaseURL("http://myhost:11434/v1", "llama3"),
+//	    ollama.NewWithBaseURL("http://myhost:11434", "llama3"),
 //	)
 package ollama
 
@@ -22,7 +22,9 @@ import (
 )
 
 // DefaultBaseURL is the default Ollama API endpoint.
-const DefaultBaseURL = "http://localhost:11434/v1"
+// Note: the SDK appends "v1/messages" to the base URL, so this should NOT
+// include a "/v1" suffix.
+const DefaultBaseURL = "http://localhost:11434"
 
 // New returns a request option that configures the client to use a local
 // Ollama instance at the default address (localhost:11434) with the

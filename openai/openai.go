@@ -5,15 +5,19 @@
 // Anthropic's format to the OpenAI chat completions format, sends the
 // request, and translates the response back into Anthropic's format.
 //
+// The baseURL should be the root of the API server, without a "/v1" suffix.
+// The SDK appends "v1/messages" automatically, and the middleware rewrites
+// the path to "/v1/chat/completions".
+//
 // Usage:
 //
 //	client := anthropic.NewClient(
-//	    openai.WithBaseURL("http://localhost:11434/v1", "llama3"),  // Ollama
+//	    openai.WithBaseURL("http://localhost:11434", "llama3"),  // Ollama
 //	)
 //
 //	// Or with an API key for OpenAI itself:
 //	client := anthropic.NewClient(
-//	    openai.WithAPIKey("http://localhost:11434/v1", "llama3", "sk-..."),
+//	    openai.WithAPIKey("https://api.openai.com", "gpt-4", "sk-..."),
 //	)
 package openai
 
